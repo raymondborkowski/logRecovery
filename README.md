@@ -1,16 +1,17 @@
 # logRecovery
 EECS484 LogRecovery Coming soon...
 
-Log Recovery as described in spec. Everything under StudentComponent is what my partner and I created.
+#Log Recovery as described in spec. Everything under StudentComponent is what my partner and I created.
 Project 4: Logging and Recovery
 Due April 17 at 11:55:00 pm
-Introduction
+#Introduction
 It's a sad fact of life: computers crash. One minute everything is working just fine, and the next
 minute everything that was in volatile memory is gone forever. To deal with this problem on your
 personal machine, you've probably gotten into the habit of saving frequently. In this project, you
 will implement an algorithm that database systems commonly use to address the same problem
 without slowing down the system too much.
-Some Basics of Transactions
+#Some Basics of Transactions
+
 1
 A transaction is any one execution of a user program in a database management system
 (DBMS). For example, suppose Ada and Bob both have accounts at the same bank. Ada logs
@@ -24,6 +25,8 @@ are gone. We would like to ensure that if this happens, the $100 has not simply 
 back in Ada's account, or it is in Bob's account. Either the whole transaction goes through, or
 the part of the transaction that happened before the crash gets undone. Another way of saying
 this is that we want a transaction to be atomic​.
+
+
 Suppose the timing of the crash was a little different. The bank's computer read Ada's balance
 into memory and modified it there, read Bob's balance into memory and modified it there, and
 triggered the emails. Then, just as it was about to write the updated balances back onto disk, it
@@ -34,7 +37,8 @@ consistency​and isolation​. These have to do with concurrency and are import
 understand, but you don't need to worry about them for this project.)
 To ensure atomicity and durability while minimizing the harm to performance, DBMSs use
 write­ahead logging​and with a recovery algorithm, such as ARIES​. In this project, you will be
-implementing a single­threaded version of ARIES.
+implementing a single­threaded version of ARIES
+
 1 Transactions will be covered in lecture soon, but if you just can't wait to learn more, check out chapter 16
 of the textbook.
 1
@@ -51,7 +55,8 @@ directory contains directories called StorageEngine, StudentComponent, output, c
 testcases. The section on Understanding the Simulator below explains what these pieces do.
 You'll also want to spend some time familiarizing yourself with the header files.
 Implement.
-Implement ARIES in LogMgr.cpp.
+
+#Implement ARIES in LogMgr.cpp.
 Do not alter the other files in any way. The autograder will compile and run your LogMgr.cpp
 with unaltered copies of all of the other files, so it is in your best interest to test with exactly the
 same files. Please do not add any header files; if you need helper functions, you may declare
